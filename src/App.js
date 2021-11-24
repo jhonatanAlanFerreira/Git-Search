@@ -3,6 +3,7 @@ import Search from "./components/search/Search";
 import { useRef, useState } from "react";
 import ReactPaginate from "react-paginate";
 import Loading from "./components/loading/Loading";
+import { numberWithCommas } from "./utils/numberWithComas";
 
 var searchValue = "";
 var sort = "order=desc&sort=";
@@ -123,7 +124,7 @@ function App() {
         <div>
           <div className="results">
             <h3>
-              {searched ? <span>{total} Resultados Encontrados</span> : null}
+              {searched ? <span>{numberWithCommas(total)} Resultados Encontrados</span> : null}
             </h3>
             <hr></hr>
           </div>
