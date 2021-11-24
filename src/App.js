@@ -4,8 +4,8 @@ import { useRef, useState } from "react";
 import ReactPaginate from "react-paginate";
 import Loading from "./components/loading/Loading";
 
-var searchValue = '';
-var sort = 'order=desc&sort=';
+var searchValue = "";
+var sort = "order=desc&sort=";
 
 function App() {
   const [repoData, setRepoData] = useState([]);
@@ -77,36 +77,47 @@ function App() {
         <div className="sort">
           <ul ref={ulRef}>
             <div className="sort-title">
-            <i>Ordenações</i>
+              <i>Ordenações</i>
             </div>
-            <li onClick={(li) => liClicked(li, ulRef, 'order=desc&sort=')} className="selected">
-             Melhor match
+            <li
+              onClick={(li) => liClicked(li, ulRef, "order=desc&sort=")}
+              className="selected"
+            >
+              Melhor match
             </li>
             <hr></hr>
-            <li onClick={(li) => liClicked(li, ulRef, 'order=desc&sort=stars')}>
+            <li onClick={(li) => liClicked(li, ulRef, "order=desc&sort=stars")}>
               Mais estrelas
             </li>
             <hr></hr>
-            <li onClick={(li) => liClicked(li, ulRef, 'order=asc&sort=stars')}>
+            <li onClick={(li) => liClicked(li, ulRef, "order=asc&sort=stars")}>
               Menas estrelas
             </li>
             <hr></hr>
-            <li onClick={(li) => liClicked(li, ulRef, 'order=desc&sort=forks')}>
+            <li onClick={(li) => liClicked(li, ulRef, "order=desc&sort=forks")}>
               Mais forks
             </li>
             <hr></hr>
-            <li onClick={(li) => liClicked(li, ulRef, 'order=asc&sort=forks')}>
+            <li onClick={(li) => liClicked(li, ulRef, "order=asc&sort=forks")}>
               Menos forks
             </li>
             <hr></hr>
-            <li onClick={(li) => liClicked(li, ulRef, 'order=desc&sort=help-wanted-issues')}>
+            <li
+              onClick={(li) =>
+                liClicked(li, ulRef, "order=desc&sort=help-wanted-issues")
+              }
+            >
               Mais issues
             </li>
             <hr></hr>
-            <li onClick={(li) => liClicked(li, ulRef, 'order=asc&sort=help-wanted-issues')}>
+            <li
+              onClick={(li) =>
+                liClicked(li, ulRef, "order=asc&sort=help-wanted-issues")
+              }
+            >
               Menos issues
             </li>
-           <hr></hr>
+            <hr></hr>
           </ul>
         </div>
         <div>

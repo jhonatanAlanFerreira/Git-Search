@@ -5,11 +5,23 @@ function Card(props) {
 
   return (
     <>
-      <div onClick={_ => goToGitHub(values.html_url)} className={classes.container}>
+      <div
+        title={"Ir para o repositório " + values.name}
+        onClick={(_) => goToGitHub(values.html_url)}
+        className={classes.container}
+      >
         <div className={classes.card}>
           <div className={classes.title}>
             <h1>{values.name}</h1>
-            <h2 onClick={_ => goToGitHub(values.owner.html_url)}><b>Criador: </b><u>{values.owner.login}</u></h2>
+            <h2>
+              <b>Criador: </b>
+              <u
+                title={"Ir para o usuário " + values.owner.login}
+                onClick={(_) => goToGitHub(values.owner.html_url)}
+              >
+                {values.owner.login}
+              </u>
+            </h2>
             <hr></hr>
           </div>
           <span>{values.description}</span>
@@ -21,7 +33,7 @@ function Card(props) {
 }
 
 function goToGitHub(githubLink) {
-  window.open(githubLink, '_blank');
+  window.open(githubLink, "_blank");
 }
 
 export default Card;

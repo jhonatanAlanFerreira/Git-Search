@@ -1,17 +1,17 @@
 function Loading(props) {
-    let { loading } = props;
+  let { loading } = props;
 
-    return (
-      <>
-        {loading ? (
-          <div className="loader">
-            <div className="spinner-border text-success" role="status">
-              <span className="sr-only">Loading...</span>
-            </div>
+  return (
+    <>
+      {loading ? (
+        <div className="loader">
+          <div className="spinner-border text-success" role="status">
+            <span className="sr-only">Loading...</span>
           </div>
-        ) : null}
-      </>
-    );
+        </div>
+      ) : null}
+    </>
+  );
 }
-  
+
 export default Loading;
