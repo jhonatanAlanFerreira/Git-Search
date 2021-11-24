@@ -49,6 +49,7 @@ li {
   position: relative;
   background-color: white !important;
   cursor: default !important;
+  pointer-events: none;
 }
 
 .selected::before {
