@@ -7,7 +7,7 @@ function Search(props) {
   function submitHandler(event) {
     event.preventDefault();
 
-    props.searchFn(inputRef.current.value);
+    props.searchFn(inputRef.current.value, true);
   }
 
   return (
