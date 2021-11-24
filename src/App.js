@@ -4,6 +4,9 @@ import { useRef, useState } from "react";
 import ReactPaginate from "react-paginate";
 import Loading from "./components/loading/Loading";
 
+var searchValue = '';
+var sort = 'order=desc&sort=';
+
 function App() {
   const [repoData, setRepoData] = useState([]);
   const [total, setTotal] = useState(0);
@@ -17,13 +20,14 @@ function App() {
 
   const ulRef = useRef();
 
-  function search(searhcValue) {
-    if (!searhcValue) return;
+  function search(useSearchValue) {
+    if (!useSearchValue) return;
 
+    searchValue = useSearchValue;
     setLoading(true);
 
     fetch(
-      `https://api.github.com/search/repositories?q=${searhcValue}&per_page=10`
+      `https://api.github.com/search/repositories?q=${searchValue}&per_page=10&${sort}`
     )
       .then((res) => res.json())
       .then((res) => {
@@ -36,7 +40,9 @@ function App() {
 
   function handlePageClick() {}
 
-  function liClicked(li, ulRef) {
+  function liClicked(li, ulRef, useSort) {
+    sort = useSort;
+
     let liNativeEvent = li.nativeEvent;
     let ulCurrent = ulRef.current;
 
@@ -44,6 +50,8 @@ function App() {
     lis.map((li) => li.classList.remove("selected"));
 
     liNativeEvent.target.classList.add("selected");
+
+    search(searchValue);
   }
 
   function Cards() {
@@ -71,25 +79,34 @@ function App() {
             <div className="sort-title">
             <i>Ordenações</i>
             </div>
-            <li onClick={(li) => liClicked(li, ulRef)} className="selected">
-              Melhor match
+            <li onClick={(li) => liClicked(li, ulRef, 'order=desc&sort=')} className="selected">
+             Melhor match
             </li>
             <hr></hr>
-            <li onClick={(li) => liClicked(li, ulRef)}>Mais estrelas</li>
-            <hr></hr>
-            <li onClick={(li) => liClicked(li, ulRef)}>Menas estrelas</li>
-            <hr></hr>
-            <li onClick={(li) => liClicked(li, ulRef)}>Mais forks</li>
-            <hr></hr>
-            <li onClick={(li) => liClicked(li, ulRef)}>Menos forks</li>
-            <hr></hr>
-            <li onClick={(li) => liClicked(li, ulRef)}>
-              Atualizado recentemente
+            <li onClick={(li) => liClicked(li, ulRef, 'order=desc&sort=stars')}>
+              Mais estrelas
             </li>
             <hr></hr>
-            <li onClick={(li) => liClicked(li, ulRef)}>
-              Atualização mais antiga
+            <li onClick={(li) => liClicked(li, ulRef, 'order=asc&sort=stars')}>
+              Menas estrelas
             </li>
+            <hr></hr>
+            <li onClick={(li) => liClicked(li, ulRef, 'order=desc&sort=forks')}>
+              Mais forks
+            </li>
+            <hr></hr>
+            <li onClick={(li) => liClicked(li, ulRef, 'order=asc&sort=forks')}>
+              Menos forks
+            </li>
+            <hr></hr>
+            <li onClick={(li) => liClicked(li, ulRef, 'order=desc&sort=help-wanted-issues')}>
+              Mais issues
+            </li>
+            <hr></hr>
+            <li onClick={(li) => liClicked(li, ulRef, 'order=asc&sort=help-wanted-issues')}>
+              Menos issues
+            </li>
+           <hr></hr>
           </ul>
         </div>
         <div>
