@@ -8,16 +8,14 @@ import { numberWithCommas } from "./utils/numberWithComas";
 var searchValue = "";
 var sort = "order=desc&sort=";
 var page = 0;
+var pageCount = 0;
+var total = 0;
+var searched = false;
+var tooManyResults = false;
 
 function App() {
   const [repoData, setRepoData] = useState([]);
-  const [total, setTotal] = useState(0);
-  const [searched, setSearched] = useState(false);
-
-  const [pageCount, setPageCount] = useState(10);
-
   const [loading, setLoading] = useState(false);
-
   const ulRef = useRef();
 
   function search(useSearchValue, resetPage = false) {
@@ -34,11 +32,17 @@ function App() {
     )
       .then((res) => res.json())
       .then((res) => {
-        setTotal(res.total_count);
-        setPageCount(Math.ceil(res.total_count / 10));
-        setRepoData(res.items);
-        setSearched(true);
+        total = res.total_count;
+        pageCount = Math.ceil(res.total_count / 10);
+        searched = true;
+
+        if (pageCount > 100) {
+          pageCount = 100;
+          tooManyResults = true;
+        } else tooManyResults = false;
+
         setLoading(false);
+        setRepoData(res.items);
       });
   }
 
@@ -142,28 +146,35 @@ function App() {
           <Cards></Cards>
 
           {repoData.length && !loading ? (
-            <div className="paginator">
-              <ReactPaginate
-                nextLabel="Próximo >"
-                onPageChange={handlePageClick}
-                pageRangeDisplayed={5}
-                pageCount={pageCount}
-                previousLabel="< Anterior"
-                pageClassName="page-item"
-                pageLinkClassName="page-link"
-                previousClassName="page-item"
-                previousLinkClassName="page-link"
-                nextClassName="page-item"
-                nextLinkClassName="page-link"
-                breakLabel="..."
-                breakClassName="page-item"
-                breakLinkClassName="page-link"
-                containerClassName="pagination"
-                activeClassName="active"
-                renderOnZeroPageCount={null}
-                forcePage={page}
-              />
-            </div>
+            <>
+              <div className="paginator">
+                <ReactPaginate
+                  nextLabel="Próximo >"
+                  onPageChange={handlePageClick}
+                  pageRangeDisplayed={5}
+                  pageCount={pageCount}
+                  previousLabel="< Anterior"
+                  pageClassName="page-item"
+                  pageLinkClassName="page-link"
+                  previousClassName="page-item"
+                  previousLinkClassName="page-link"
+                  nextClassName="page-item"
+                  nextLinkClassName="page-link"
+                  breakLabel="..."
+                  breakClassName="page-item"
+                  breakLinkClassName="page-link"
+                  containerClassName="pagination"
+                  activeClassName="active"
+                  renderOnZeroPageCount={null}
+                  forcePage={page}
+                />
+                {tooManyResults ? (
+                  <span className="too-many-results">
+                    Apenas os 1000 primeiros
+                  </span>
+                ) : null}
+              </div>
+            </>
           ) : null}
         </div>
       </div>
