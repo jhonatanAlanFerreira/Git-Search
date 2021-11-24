@@ -45,7 +45,7 @@ button {
   width: var(--btn-width);
   font-weight: bold;
   background: var(--color-brand);
-  border-radius: 0 var(--rad) var(--rad) 0;
+  border-radius: 0 var(--rad) var(--rad) 0 !important;
   height: 2rem;
 }
 input:not(:placeholder-shown) {

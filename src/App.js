@@ -134,7 +134,12 @@ function App() {
           <div className="results">
             <h3>
               {searched ? (
-                <span>{numberWithCommas(total)} Resultados Encontrados</span>
+                <span>
+                  {numberWithCommas(total)}{" "}
+                  {total > 1
+                    ? "Resultados Encontrados"
+                    : "Resultado Encontrado"}
+                </span>
               ) : null}
             </h3>
             <hr></hr>
