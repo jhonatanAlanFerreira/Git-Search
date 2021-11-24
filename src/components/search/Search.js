@@ -1,10 +1,29 @@
-import classes from './Search.module.scss';
+import { useRef } from "react";
+import classes from "./Search.module.scss";
 
-function Search() {
-  return <form onsubmit="event.preventDefault();" role="search">
-  <input id="search" type="search" placeholder="Procurar repositórios" autofocus required />
-  <button type="submit">Buscar</button>    
-</form>
+function Search(props) {
+  const inputRef = useRef();
+
+  function submitHandler(event) {
+    event.preventDefault();
+
+    props.searchFn(inputRef.current.value);
+  }
+
+  return (
+    <>
+      <form onSubmit={submitHandler} role="search">
+        <input
+          ref={inputRef}
+          id="search"
+          type="search"
+          placeholder="Procurar repositórios"
+          autoFocus
+        />
+        <button type="submit">Buscar</button>
+      </form>
+    </>
+  );
 }
 
 export default Search;
