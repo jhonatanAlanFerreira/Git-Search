@@ -2,6 +2,7 @@ import Card from "./components/card/Card";
 import Search from "./components/search/Search";
 import { useRef, useState } from "react";
 import ReactPaginate from "react-paginate";
+import Loading from "./components/loading/Loading";
 
 function App() {
   const [repoData, setRepoData] = useState([]);
@@ -12,10 +13,14 @@ function App() {
   const [pageCount, setPageCount] = useState(10);
   const [itemOffset, setItemOffset] = useState(0);
 
+  const [loading, setLoading] = useState(false);
+
   const ulRef = useRef();
 
   function search(searhcValue) {
     if (!searhcValue) return;
+
+    setLoading(true);
 
     fetch(
       `https://api.github.com/search/repositories?q=${searhcValue}&per_page=10`
@@ -25,19 +30,34 @@ function App() {
         setRepoData(res.items);
         setTotal(res.total_count);
         setSearched(true);
+        setLoading(false);
       });
   }
 
-  function handlePageClick() { }
-  
+  function handlePageClick() {}
+
   function liClicked(li, ulRef) {
     let liNativeEvent = li.nativeEvent;
-    let ulCurrent  = ulRef.current;
-    
-    let lis = Array.from(ulCurrent.getElementsByTagName('li'));
-    lis.map(li => li.classList.remove('selected'));
+    let ulCurrent = ulRef.current;
 
-    liNativeEvent.target.classList.add('selected');
+    let lis = Array.from(ulCurrent.getElementsByTagName("li"));
+    lis.map((li) => li.classList.remove("selected"));
+
+    liNativeEvent.target.classList.add("selected");
+  }
+
+  function Cards() {
+    return (
+      <>
+        {!loading ? (
+          <div className="cards-grid">
+            {repoData.map((data) => (
+              <Card key={data.id} values={data}></Card>
+            ))}
+          </div>
+        ) : null}
+      </>
+    );
   }
 
   return (
@@ -47,20 +67,27 @@ function App() {
       </div>
       <div className="page-grid">
         <div className="sort">
+          <i>Ordenações</i>
           <ul ref={ulRef}>
-            <li onClick={ li => liClicked(li, ulRef)} className="selected">Melhor match</li>
+            <li onClick={(li) => liClicked(li, ulRef)} className="selected">
+              Melhor match
+            </li>
             <hr></hr>
-            <li onClick={ li => liClicked(li, ulRef)}>Mais estrelas</li>
+            <li onClick={(li) => liClicked(li, ulRef)}>Mais estrelas</li>
             <hr></hr>
-            <li onClick={ li => liClicked(li, ulRef)}>Menas estrelas</li>
+            <li onClick={(li) => liClicked(li, ulRef)}>Menas estrelas</li>
             <hr></hr>
-            <li onClick={ li => liClicked(li, ulRef)}>Mais forks</li>
+            <li onClick={(li) => liClicked(li, ulRef)}>Mais forks</li>
             <hr></hr>
-            <li onClick={ li => liClicked(li, ulRef)}>Menas forks</li>
+            <li onClick={(li) => liClicked(li, ulRef)}>Menas forks</li>
             <hr></hr>
-            <li onClick={ li => liClicked(li, ulRef)}>Atualizado recentemente</li>
+            <li onClick={(li) => liClicked(li, ulRef)}>
+              Atualizado recentemente
+            </li>
             <hr></hr>
-            <li onClick={ li => liClicked(li, ulRef)}>Atualização mais antiga</li>
+            <li onClick={(li) => liClicked(li, ulRef)}>
+              Atualização mais antiga
+            </li>
           </ul>
         </div>
         <div>
@@ -70,13 +97,12 @@ function App() {
             </h3>
             <hr></hr>
           </div>
-          <div className="cards-grid">
-            {repoData.map((data) => (
-              <Card key={data.id} values={data}></Card>
-            ))}
-          </div>
 
-          {repoData.length ? (
+          <Loading loading={loading}></Loading>
+
+          <Cards></Cards>
+
+          {repoData.length && !loading ? (
             <div className="paginator">
               <ReactPaginate
                 nextLabel="next >"
