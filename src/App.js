@@ -59,7 +59,6 @@ function App() {
 
     let lis = Array.from(ulCurrent.getElementsByTagName("li"));
     lis.map((li) => li.classList.remove("selected"));
-
     liNativeEvent.target.classList.add("selected");
 
     search(searchValue);
@@ -170,7 +169,7 @@ function App() {
                 />
                 {tooManyResults ? (
                   <span className="too-many-results">
-                    Apenas os 1000 primeiros
+                    Apenas os 1000 primeiros resultados
                   </span>
                 ) : null}
               </div>
