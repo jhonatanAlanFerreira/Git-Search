@@ -2,6 +2,40 @@ body{
     padding: 1rem;
 }
 
+hr{
+    color: green !important;
+}
+
+li{
+    white-space: nowrap;
+}
+
+.sort ul{
+    border: 1px solid #00800036;
+    padding: 1rem;
+    border-radius: 5%;
+    list-style: none;
+}
+
+.sort hr{
+    margin: 5px;
+}
+
+.sort li{
+    cursor: pointer;
+    padding: 2px;
+}
+
+.sort li:hover{
+    background-color: #0080001a;
+    border-radius: 5%;
+}
+
+.selected::before{
+    content: '✓ ';
+    color: green;
+}
+
 .search-bar{
     display: flex;
     justify-content: center;
@@ -18,12 +52,16 @@ body{
     grid-template-columns: 1fr;
 }
 
-.linguages{
-    border: 1px solid rgba(0, 128, 0, 0.198);
+.sort{
     width: 97%;
-    padding: 1rem;
 }
 
-hr{
-    color: green !important;
+.paginator{
+ display: flex;
+ justify-content: center;
+ margin-top: 1rem;
+}
+
+.results{
+    padding-left: 1rem;
 }

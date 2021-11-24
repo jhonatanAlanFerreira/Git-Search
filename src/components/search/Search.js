@@ -19,6 +19,7 @@ function Search(props) {
           type="search"
           placeholder="Procurar repositórios"
           autoFocus
+          autoComplete="off"
         />
         <button type="submit">Buscar</button>
       </form>

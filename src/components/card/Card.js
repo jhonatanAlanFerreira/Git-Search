@@ -9,7 +9,8 @@ function Card(props) {
         <div className={classes.card}>
           <div className={classes.title}>
             <h1>{values.name}</h1>
-            <h2>"{values.owner.login}"</h2>
+            <h2 onClick={_ => goToGitHub(values.owner.html_url)}><b>Criador: </b><u>{values.owner.login}</u></h2>
+            <hr></hr>
           </div>
           <span>{values.description}</span>
           <div className={classes.content}></div>
@@ -19,8 +20,8 @@ function Card(props) {
   );
 }
 
-function goToGitHub(githubLink){
-  window.location = githubLink;
+function goToGitHub(githubLink) {
+  window.open(githubLink, '_blank');
 }
 
 export default Card;
