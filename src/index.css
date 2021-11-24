@@ -10,6 +10,19 @@ li {
   white-space: nowrap;
 }
 
+.sort {
+  width: 97%;
+  min-width: 13rem;
+}
+
+.sort-title {
+  height: 3rem;
+  opacity: 0.5;
+  color: green;
+  left: -0.7rem;
+  position: relative;
+}
+
 .sort ul {
   border: 1px solid #00800036;
   padding: 0 1rem 1rem 1rem;
@@ -57,18 +70,6 @@ li {
 .cards-grid {
   display: grid;
   grid-template-columns: 1fr;
-}
-
-.sort {
-  width: 97%;
-}
-
-.sort-title {
-  height: 3rem;
-  opacity: 0.5;
-  color: green;
-  left: -0.7rem;
-  position: relative;
 }
 
 .paginator {

@@ -5,7 +5,7 @@ function Loading(props) {
       <>
         {loading ? (
           <div className="loader">
-            <div className="spinner-border" role="status">
+            <div className="spinner-border text-success" role="status">
               <span className="sr-only">Loading...</span>
             </div>
           </div>
