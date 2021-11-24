@@ -12,7 +12,7 @@ li {
 
 .sort ul {
   border: 1px solid #00800036;
-  padding: 1rem;
+  padding: 0 1rem 1rem 1rem;
   border-radius: 5%;
   list-style: none;
 }
@@ -29,10 +29,6 @@ li {
 .sort li:hover {
   background-color: #0080001a;
   border-radius: 3%;
-}
-
-.sort i {
-  margin-left: 5px;
 }
 
 .selected {
@@ -65,6 +61,14 @@ li {
 
 .sort {
   width: 97%;
+}
+
+.sort-title {
+  height: 3rem;
+  opacity: 0.5;
+  color: green;
+  left: -0.7rem;
+  position: relative;
 }
 
 .paginator {

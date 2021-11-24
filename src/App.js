@@ -67,8 +67,10 @@ function App() {
       </div>
       <div className="page-grid">
         <div className="sort">
-          <i>Ordenações</i>
           <ul ref={ulRef}>
+            <div className="sort-title">
+            <i>Ordenações</i>
+            </div>
             <li onClick={(li) => liClicked(li, ulRef)} className="selected">
               Melhor match
             </li>
@@ -79,7 +81,7 @@ function App() {
             <hr></hr>
             <li onClick={(li) => liClicked(li, ulRef)}>Mais forks</li>
             <hr></hr>
-            <li onClick={(li) => liClicked(li, ulRef)}>Menas forks</li>
+            <li onClick={(li) => liClicked(li, ulRef)}>Menos forks</li>
             <hr></hr>
             <li onClick={(li) => liClicked(li, ulRef)}>
               Atualizado recentemente
