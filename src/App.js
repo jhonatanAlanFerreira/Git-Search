@@ -140,7 +140,7 @@ function App() {
                       ? "Resultados Encontrados"
                       : "Resultado Encontrado"}
                   </span>
-                ) : null}
+                ) : <span style={{opacity: '0.3'}}>Esperando consulta</span>}
               </h3>
               <hr></hr>
             </div>
