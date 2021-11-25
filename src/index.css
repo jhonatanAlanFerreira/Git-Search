@@ -61,7 +61,7 @@ li {
 .content-grid {
   display: grid;
   grid-template-columns: auto 1fr;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .cards-grid {
@@ -99,7 +99,7 @@ li {
 
 .root-grid {
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
   display: grid;
   grid-template-rows: max-content auto max-content;
   padding: 1rem;
