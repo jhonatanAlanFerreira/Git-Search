@@ -101,6 +101,6 @@ li {
   height: 100vh;
   overflow: auto;
   display: grid;
-  grid-template-rows: max-content auto max-content;
+  grid-template-rows: max-content max-content auto max-content;
   padding: 1rem;
 }
