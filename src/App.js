@@ -87,18 +87,18 @@ function App() {
           <Search searchFn={search}></Search>
         </div>
         <div className="results">
-              <h3>
-                {searched ? (
-                  <span>
-                    {numberWithCommas(total)}{" "}
-                    {total > 1
-                      ? "Resultados Encontrados"
-                      : "Resultado Encontrado"}
-                  </span>
-                ) : <span style={{opacity: '0.3'}}>Esperando consulta</span>}
-              </h3>
-              <hr></hr>
-            </div>
+          <h3>
+            {searched ? (
+              <span>
+                {numberWithCommas(total)}{" "}
+                {total > 1 ? "Resultados Encontrados" : "Resultado Encontrado"}
+              </span>
+            ) : (
+              <span style={{ opacity: "0.3" }}>Esperando consulta</span>
+            )}
+          </h3>
+          <hr></hr>
+        </div>
         <div className="content-grid">
           {!smallWindow ? (
             <div className="sort">
@@ -144,7 +144,6 @@ function App() {
             </div>
           ) : null}
           <div style={{ overflow: "auto" }}>
-
             <Loading loading={loading}></Loading>
 
             <Cards></Cards>
