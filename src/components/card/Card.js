@@ -1,3 +1,4 @@
+import { encodeEmojis } from "../../utils/encodeEmojis";
 import classes from "./Card.module.scss";
 
 function Card(props) {
@@ -25,13 +26,13 @@ function Card(props) {
             {values.language ? (
               <h2 title={"Feito em " + values.language}>
                 <b>
-                  <i class="fa fa-code"></i>&nbsp;{values.language}
+                  <i className="fa fa-code"></i>&nbsp;{values.language}
                 </b>
               </h2>
             ) : null}
             <hr></hr>
           </div>
-          <span>{values.description}</span>
+          <span>{encodeEmojis(values.description)}</span>
           <div className={classes.content}>
             <div className={classes.icons}>
               <div title="Estrelas">
