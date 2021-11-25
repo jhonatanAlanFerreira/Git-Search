@@ -22,6 +22,13 @@ function Card(props) {
                 {values.owner.login}
               </u>
             </h2>
+            {values.language ? (
+              <h2 title={"Feito em " + values.language}>
+                <b>
+                  <i class="fa fa-code"></i>&nbsp;{values.language}
+                </b>
+              </h2>
+            ) : null}
             <hr></hr>
           </div>
           <span>{values.description}</span>
@@ -38,12 +45,12 @@ function Card(props) {
                 {values.forks_count}
               </div>
               <div
-                onClick={(_) => goToGitHub(values.html_url+'/issues')}
+                onClick={(_) => goToGitHub(values.html_url + "/issues")}
                 title="Ir para issues"
               >
                 <i className="fa fa-dot-circle-o"></i>
                 &nbsp;
-                <u>Issues</u>
+                <u>Issues/PR ({values.open_issues})</u>
               </div>
             </div>
           </div>
