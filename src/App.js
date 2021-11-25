@@ -13,6 +13,8 @@ var total = 0;
 var searched = false;
 var tooManyResults = false;
 
+const smallWindow = window.screen.width < 900;
+
 function App() {
   const [repoData, setRepoData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -85,43 +87,49 @@ function App() {
           <Search searchFn={search}></Search>
         </div>
         <div className="content-grid">
-          <div className="sort">
-            <ul ref={ulRef}>
-              <div className="sort-title">
-                <i>Ordenações</i>
-              </div>
-              <li
-                onClick={(li) => liClicked(li, ulRef, "order=desc&sort=")}
-                className="selected"
-              >
-                Melhor match
-              </li>
-              <hr></hr>
-              <li
-                onClick={(li) => liClicked(li, ulRef, "order=desc&sort=stars")}
-              >
-                Mais estrelas
-              </li>
-              <hr></hr>
-              <li
-                onClick={(li) => liClicked(li, ulRef, "order=asc&sort=stars")}
-              >
-                Menas estrelas
-              </li>
-              <hr></hr>
-              <li
-                onClick={(li) => liClicked(li, ulRef, "order=desc&sort=forks")}
-              >
-                Mais forks
-              </li>
-              <hr></hr>
-              <li
-                onClick={(li) => liClicked(li, ulRef, "order=asc&sort=forks")}
-              >
-                Menos forks
-              </li>
-            </ul>
-          </div>
+          {!smallWindow ? (
+            <div className="sort">
+              <ul ref={ulRef}>
+                <div className="sort-title">
+                  <i>Ordenações</i>
+                </div>
+                <li
+                  onClick={(li) => liClicked(li, ulRef, "order=desc&sort=")}
+                  className="selected"
+                >
+                  Melhor match
+                </li>
+                <hr></hr>
+                <li
+                  onClick={(li) =>
+                    liClicked(li, ulRef, "order=desc&sort=stars")
+                  }
+                >
+                  Mais estrelas
+                </li>
+                <hr></hr>
+                <li
+                  onClick={(li) => liClicked(li, ulRef, "order=asc&sort=stars")}
+                >
+                  Menas estrelas
+                </li>
+                <hr></hr>
+                <li
+                  onClick={(li) =>
+                    liClicked(li, ulRef, "order=desc&sort=forks")
+                  }
+                >
+                  Mais forks
+                </li>
+                <hr></hr>
+                <li
+                  onClick={(li) => liClicked(li, ulRef, "order=asc&sort=forks")}
+                >
+                  Menos forks
+                </li>
+              </ul>
+            </div>
+          ) : null}
           <div style={{ overflow: "auto" }}>
             <div className="results">
               <h3>
