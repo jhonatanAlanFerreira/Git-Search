@@ -25,7 +25,28 @@ function Card(props) {
             <hr></hr>
           </div>
           <span>{values.description}</span>
-          <div className={classes.content}></div>
+          <div className={classes.content}>
+            <div className={classes.icons}>
+              <div title="Estrelas">
+                <i className="fa fa-star"></i>
+                &nbsp;
+                {values.stargazers_count}
+              </div>
+              <div title="Forks">
+                <i className="fa fa-code-fork"></i>
+                &nbsp;
+                {values.forks_count}
+              </div>
+              <div
+                onClick={(_) => goToGitHub(values.html_url+'/issues')}
+                title="Ir para issues"
+              >
+                <i className="fa fa-dot-circle-o"></i>
+                &nbsp;
+                <u>Issues</u>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

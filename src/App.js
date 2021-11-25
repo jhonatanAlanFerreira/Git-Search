@@ -111,23 +111,6 @@ function App() {
             <li onClick={(li) => liClicked(li, ulRef, "order=asc&sort=forks")}>
               Menos forks
             </li>
-            <hr></hr>
-            <li
-              onClick={(li) =>
-                liClicked(li, ulRef, "order=desc&sort=help-wanted-issues")
-              }
-            >
-              Mais issues
-            </li>
-            <hr></hr>
-            <li
-              onClick={(li) =>
-                liClicked(li, ulRef, "order=asc&sort=help-wanted-issues")
-              }
-            >
-              Menos issues
-            </li>
-            <hr></hr>
           </ul>
         </div>
         <div>
