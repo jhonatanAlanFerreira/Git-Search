@@ -80,90 +80,99 @@ function App() {
 
   return (
     <>
-      <div className="search-bar">
-        <Search searchFn={search}></Search>
-      </div>
-      <div className="page-grid">
-        <div className="sort">
-          <ul ref={ulRef}>
-            <div className="sort-title">
-              <i>Ordenações</i>
-            </div>
-            <li
-              onClick={(li) => liClicked(li, ulRef, "order=desc&sort=")}
-              className="selected"
-            >
-              Melhor match
-            </li>
-            <hr></hr>
-            <li onClick={(li) => liClicked(li, ulRef, "order=desc&sort=stars")}>
-              Mais estrelas
-            </li>
-            <hr></hr>
-            <li onClick={(li) => liClicked(li, ulRef, "order=asc&sort=stars")}>
-              Menas estrelas
-            </li>
-            <hr></hr>
-            <li onClick={(li) => liClicked(li, ulRef, "order=desc&sort=forks")}>
-              Mais forks
-            </li>
-            <hr></hr>
-            <li onClick={(li) => liClicked(li, ulRef, "order=asc&sort=forks")}>
-              Menos forks
-            </li>
-          </ul>
+      <div className="root-grid">
+        <div className="search-bar">
+          <Search searchFn={search}></Search>
         </div>
-        <div>
-          <div className="results">
-            <h3>
-              {searched ? (
-                <span>
-                  {numberWithCommas(total)}{" "}
-                  {total > 1
-                    ? "Resultados Encontrados"
-                    : "Resultado Encontrado"}
-                </span>
-              ) : null}
-            </h3>
-            <hr></hr>
+        <div className="content-grid">
+          <div className="sort">
+            <ul ref={ulRef}>
+              <div className="sort-title">
+                <i>Ordenações</i>
+              </div>
+              <li
+                onClick={(li) => liClicked(li, ulRef, "order=desc&sort=")}
+                className="selected"
+              >
+                Melhor match
+              </li>
+              <hr></hr>
+              <li
+                onClick={(li) => liClicked(li, ulRef, "order=desc&sort=stars")}
+              >
+                Mais estrelas
+              </li>
+              <hr></hr>
+              <li
+                onClick={(li) => liClicked(li, ulRef, "order=asc&sort=stars")}
+              >
+                Menas estrelas
+              </li>
+              <hr></hr>
+              <li
+                onClick={(li) => liClicked(li, ulRef, "order=desc&sort=forks")}
+              >
+                Mais forks
+              </li>
+              <hr></hr>
+              <li
+                onClick={(li) => liClicked(li, ulRef, "order=asc&sort=forks")}
+              >
+                Menos forks
+              </li>
+            </ul>
           </div>
-
-          <Loading loading={loading}></Loading>
-
-          <Cards></Cards>
-
-          {repoData.length && !loading ? (
-            <>
-              <div className="paginator">
-                <ReactPaginate
-                  nextLabel="Próximo >"
-                  onPageChange={handlePageClick}
-                  pageRangeDisplayed={5}
-                  pageCount={pageCount}
-                  previousLabel="< Anterior"
-                  pageClassName="page-item"
-                  pageLinkClassName="page-link"
-                  previousClassName="page-item"
-                  previousLinkClassName="page-link"
-                  nextClassName="page-item"
-                  nextLinkClassName="page-link"
-                  breakLabel="..."
-                  breakClassName="page-item"
-                  breakLinkClassName="page-link"
-                  containerClassName="pagination"
-                  activeClassName="active"
-                  renderOnZeroPageCount={null}
-                  forcePage={page}
-                />
-                {tooManyResults ? (
-                  <span className="too-many-results">
-                    Apenas os 1000 primeiros resultados
+          <div style={{ overflow: "auto" }}>
+            <div className="results">
+              <h3>
+                {searched ? (
+                  <span>
+                    {numberWithCommas(total)}{" "}
+                    {total > 1
+                      ? "Resultados Encontrados"
+                      : "Resultado Encontrado"}
                   </span>
                 ) : null}
-              </div>
-            </>
-          ) : null}
+              </h3>
+              <hr></hr>
+            </div>
+
+            <Loading loading={loading}></Loading>
+
+            <Cards></Cards>
+          </div>
         </div>
+        {repoData.length && !loading ? (
+          <>
+            <div className="paginator">
+              <ReactPaginate
+                nextLabel="Próximo >"
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={5}
+                pageCount={pageCount}
+                previousLabel="< Anterior"
+                pageClassName="page-item"
+                pageLinkClassName="page-link"
+                previousClassName="page-item"
+                previousLinkClassName="page-link"
+                nextClassName="page-item"
+                nextLinkClassName="page-link"
+                breakLabel="..."
+                breakClassName="page-item"
+                breakLinkClassName="page-link"
+                containerClassName="pagination"
+                activeClassName="active"
+                renderOnZeroPageCount={null}
+                forcePage={page}
+              />
+              {tooManyResults ? (
+                <span className="too-many-results">
+                  Apenas os 1000 primeiros resultados
+                </span>
+              ) : null}
+            </div>
+          </>
+        ) : null}
       </div>
     </>
   );

@@ -1,7 +1,3 @@
-body {
-  padding: 1rem;
-}
-
 hr {
   color: green !important;
 }
@@ -62,14 +58,16 @@ li {
   padding: 1rem;
 }
 
-.page-grid {
+.content-grid {
   display: grid;
   grid-template-columns: auto 1fr;
+  overflow: hidden;
 }
 
 .cards-grid {
   display: grid;
   grid-template-columns: 1fr;
+  overflow: auto;
 }
 
 .paginator {
@@ -97,4 +95,12 @@ li {
   font-size: 0.8rem;
   display: flex;
   align-items: center;
+}
+
+.root-grid {
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: max-content auto max-content;
+  padding: 1rem;
 }
