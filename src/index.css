@@ -88,15 +88,6 @@ li {
   height: 100%;
 }
 
-.too-many-results {
-  color: red;
-  opacity: 0.8;
-  margin-left: 15px;
-  font-size: 0.8rem;
-  display: flex;
-  align-items: center;
-}
-
 .root-grid {
   height: 100vh;
   overflow: auto;

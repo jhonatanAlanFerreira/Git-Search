@@ -11,7 +11,6 @@ var page = 0;
 var pageCount = 0;
 var total = 0;
 var searched = false;
-var tooManyResults = false;
 
 const smallWindow = window.screen.width < 900;
 
@@ -38,11 +37,8 @@ function App() {
         pageCount = Math.ceil(res.total_count / 10);
         searched = true;
 
-        if (pageCount > 100) {
-          pageCount = 100;
-          tooManyResults = true;
-        } else tooManyResults = false;
-
+        if (pageCount > 100) pageCount = 100;
+          
         setLoading(false);
         setRepoData(res.items);
       });
@@ -172,11 +168,6 @@ function App() {
                 renderOnZeroPageCount={null}
                 forcePage={page}
               />
-              {tooManyResults ? (
-                <span className="too-many-results">
-                  Apenas os 1000 primeiros resultados
-                </span>
-              ) : null}
             </div>
           </>
         ) : null}
