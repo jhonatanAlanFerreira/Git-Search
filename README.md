@@ -1,12 +1,24 @@
-# git-search
+# Git Search
 
-### Uma página em React para consultar repositórios do Github
+<kbd>
+  <img src="https://raw.githubusercontent.com/jhonatanAlanFerreira/git-search/master/screenshots/screenshot1.png" alt="Screen Shot">
+  <br>
+</kbd>
 
-## Uso
-Execute `npm install` na pasta do projeto onde fica o package.json para instalar as dependências do projeto, em seguida execute `npm start` para a aplicação abrir em http://localhost:3000
+> Uma página em React para consultar repositórios consumindo a API do Github.
 
-Os resultados são mostrados em formato cards com paginação de 10 itens por página, como a API do github só mostra os primeiros 1000 resultados, então não é mostrado páginas acima de 100. 
+## 💻 Pré-requisitos
 
-Ao clicar em um card você é redirecionado ao repositório do Github referente ao card, existem outros links na página como o criado e a contagem de issues que também redirecionam ao Github.
+Necessário ter Node.js e NPM instalados.
+<br>https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 
-Também existem alguns tipos de ordenações como quantidade de estrelas, forks e etc...
+## ☕ Usando Git Search
+Execute `npm install` no terminal dentro da pasta do projeto onde fica o package.json para instalar as dependências do projeto, em seguida execute `npm start` para compilar. Será aberto uma página em http://localhost:3000.
+
+## 🌟 Features 
+
+* Os resultados são mostrados em formato cards com paginação de 10 itens por página. A API do Github apenas lista os 1000 primeiros resultados.
+
+* Ao clicar em um card você é redirecionado ao repositório do Github referente ao card, existem outros links na página como o criador e a contagem de issues que também redirecionam ao Github.
+
+* Os resultados podem ser ordenados selecionando um item da lista do lado esquerdo da página.
