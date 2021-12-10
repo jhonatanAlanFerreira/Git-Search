@@ -9,7 +9,9 @@ Demonstração online http://jhonatanferreira.site/git-search
 
 > Uma página em React para consultar repositórios consumindo a API do Github.
 
-http://jhonatanferreira.site/git-search
+### Ajustes e melhorias
+
+* Para telas pequenas a largura essa fixa, a responsividade será melhorada.
 
 ## 💻 Pré-requisitos
 
