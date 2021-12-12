@@ -1,6 +1,6 @@
 # Git Search
 
-Demonstração online http://jhonatanferreira.site/git-search
+Demonstração online http://jhonferreira.eastus.cloudapp.azure.com/git-search
 
 <kbd>
   <img src="https://raw.githubusercontent.com/jhonatanAlanFerreira/git-search/master/screenshots/screenshot1.png" alt="Screen Shot">
