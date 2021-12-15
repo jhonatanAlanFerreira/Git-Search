@@ -64,3 +64,9 @@ label {
   width: 1px;
   overflow: hidden;
 }
+
+@media screen and (max-width:540px){
+  form{
+    width: unset;
+  }
+}
