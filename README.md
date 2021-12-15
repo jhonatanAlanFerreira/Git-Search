@@ -1,11 +1,17 @@
 # Git Search
 
+Demonstração online https://jhonatanferreira.me/git-search
+
 <kbd>
   <img src="https://raw.githubusercontent.com/jhonatanAlanFerreira/git-search/master/screenshots/screenshot1.png" alt="Screen Shot">
   <br>
 </kbd>
 
 > Uma página em React para consultar repositórios consumindo a API do Github.
+
+### Ajustes e melhorias
+
+* Para telas pequenas a largura essa fixa, a responsividade será melhorada.
 
 ## 💻 Pré-requisitos
 
